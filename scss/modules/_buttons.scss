@@ -1,0 +1,19 @@
+/*Adds style for buttons*/
+.banner__content--btn {
+  padding: 30px 0px;
+
+  a {
+    text-decoration: none;
+    color: $default-text-color;
+    padding: 10px 25px;
+    background-color: $secondary-color;
+    border-radius: 50px;
+  }
+  /*Adds style for buttons with hover effect*/
+  a:hover {
+    background-color: $primary-color;
+    color: $default-text-color;
+    @include transition-ease;
+    padding: 10px 30px;
+  }
+}
