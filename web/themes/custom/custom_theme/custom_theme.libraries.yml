@@ -1,0 +1,8 @@
+# Main theme library.
+todo:
+  js:
+    js/todo.js: {}
+
+  css:
+    theme:
+      dist/css/main.min.css: {}

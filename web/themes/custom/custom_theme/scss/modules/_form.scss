@@ -1,0 +1,56 @@
+@use "../base/variables" as *;
+
+.list__container {
+  color: $base-color;
+  list-style-type: none;
+
+  & li {
+    list-style-type: none;
+    position: relative;
+  }
+
+  & li::before{
+    content: '';
+    position: absolute;
+    left: -1px;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-image: url(../../images/unchecked.png);
+    background-size: cover;
+    background-position: center;
+    top: 2px;
+    left: -25px;
+  }
+}
+
+.checked {
+  color: $checked-color;
+  text-decoration: line-through;
+
+  &::before{
+    content: '';
+    position: absolute;
+    border: 4px solid $checked-color;
+    height: 20px;
+    width: 20px;
+    left: -10px;
+  }
+}
+
+.remove {
+  position: absolute;
+  right: 0;
+  top: 5px;
+  width: 40px;
+  height: 40px;
+  font-size: 22px;
+  color: $base-color;
+  line-height: 40px;
+  text-align: center;
+}
+
+ul li span:hover {
+  background: $hover-color;
+  border-radius: 50%;
+}
