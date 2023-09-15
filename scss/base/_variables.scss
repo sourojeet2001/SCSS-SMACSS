@@ -1,0 +1,14 @@
+/* Declaration of global variables to be used in the web page. */
+$primary-color: #febb0c;
+$secondary-color: #007a82;
+$text-color: #3d3d3d;
+$banner-background-color: #f5f5f5;
+$default-text-color: #fff;
+@font-face {
+  font-family: 'Bebas_Neue';
+  src: url('../../fonts/Bebas_Neue/BebasNeue-Regular.ttf') format('truetype');
+};
+@font-face {
+  font-family: 'Lato-Black';
+  src: url('../../fonts/Lato/Lato-Black.ttf') format('truetype');
+};

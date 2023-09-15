@@ -1,0 +1,46 @@
+/* Adds style for the navigation bar menu item. */
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 10px 0;
+
+  &__item--left {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 2rem;
+  }
+
+  &__item--left > &__item--list > a:hover {
+    color: $primary-color;
+  }
+
+  &__item--right {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 2rem;
+    padding-left: 4rem;
+  }
+
+  &__item--right > &__item--list > a:hover{
+    padding: 10px 25px;
+    background-color: $secondary-color;
+    color: $default-text-color;
+    border-radius: 50px;
+    @include transition-ease;
+  }
+
+  &__item--list {
+    list-style: none;
+  }
+
+  &__item--list > a {
+    text-decoration: none;
+    color: $text-color;
+    padding: 10px 25px;
+  }
+
+  .active {
+    color: $primary-color;
+  }
+}

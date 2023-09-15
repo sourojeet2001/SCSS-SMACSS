@@ -1,0 +1,8 @@
+# Ignoring images directory.
+Images/
+# Ignoring fonts directory.
+fonts/
+# Ignoring node_modules directory.
+node_modules/
+# Ignoring sample directory.
+sample/
