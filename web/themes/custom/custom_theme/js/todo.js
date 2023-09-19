@@ -12,6 +12,7 @@
     attach(context, settings) {
       once('newTest', '.todo', context).forEach(function (element) {
         var data = [];
+        var storedData = JSON.parse(localStorage.getItem('data')) || [];
         listContainer = $('.list__container', context);
         $(".todo", context).click(function (event) {
           var inputVal = $('.todoitem').val();
@@ -20,12 +21,12 @@
           li.innerHTML = inputVal;
           listContainer.append(li);
           data.push(li.innerHTML);
-          console.log(data);
           let span = document.createElement('span');
           span.classList.add('remove');
           span.innerHTML = "\u00d7";
           li.append(span);
           saveData();
+          $('.todoitem').val('');
         });
 
         $(".list__container", context).click(function (e) {
@@ -35,22 +36,29 @@
           } 
           else if (e.target.tagName === 'SPAN') {
             e.target.parentElement.remove();
+            data.pop(e.target.parentElement);
             saveData();
           }
         });
-
         function saveData() {
           if (listContainer) {
-            localStorage.setItem('data', data);
+            if (data.length === 0) {
+              return;
+            }
+            let existingData = JSON.parse(localStorage.getItem('data')) || [];
+            if (existingData) {
+              existingData = existingData.concat(data);
+              localStorage.setItem('data', JSON.stringify(existingData));
+            }
+            else {
+              localStorage.setItem('data', JSON.stringify(data));
+            }
           }
         }
 
         function showList() {
-          const data = localStorage.getItem('data');
-          const dataArray = data.split(',');
-
-          if (dataArray.length) {
-            dataArray.forEach(item => {
+          if (storedData.length) {
+            storedData.forEach(item => {
               const listItem = document.createElement('li');
               listItem.innerHTML = item;
               listContainer.append(listItem);
@@ -61,12 +69,20 @@
             });
           } 
         }
-        
         showList();
+
+        function clearLocalStorageByValue(value) {
+          for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            const storedValue = localStorage.getItem(key);
         
+            if (storedValue === value) {
+              localStorage.removeItem(key);
+            }
+          }
+        }
       });
     },
     
   };
 })(jQuery, Drupal, once);
-
